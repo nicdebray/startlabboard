@@ -1,0 +1,12 @@
+<h1>JobOffers#index</h1>
+<p>Find me in app/views/job_offers/index.html.erb</p>
+<%= link_to "Publish new job offer", new_job_offer_path %>
+<div class="card">
+<% @job_offers.each do |job_offer| %>
+<div><%= job_offer.title %></div>
+<div><%= job_offer.description %></div>
+<div><%= link_to "edit", edit_job_offer_path(job_offer) %></div>
+<div><%= link_to "delete", job_offer_path(job_offer), method: :delete, data: {confirm: "Are you sure?"} %></div>
+<% end %>
+</div>
+

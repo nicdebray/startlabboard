@@ -1,0 +1,44 @@
+<%= simple_form_for @job_offer do |f| %>
+<%= f.input :company,
+            label: "Company",
+            autofocus: false,
+            input_html: { autocomplete: "Company's name",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :category,
+            label: "Category",
+            input_html: { autocomplete: "Job's category",
+              class: 'form-control form-margin-btn form-category'},
+              collection: @job_category
+                %>
+<%= f.input :title,
+            label: "title",
+            input_html: { autocomplete: "Job offer's title",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :description,
+            label: "Description",
+            input_html: { autocomplete: "Job's description",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :start_date,
+            label: "Start date",
+            input_html: { autocomplete: "Job's start date",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :end_date,
+            label: "End date",
+            input_html: { autocomplete: "Job's end date",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :phone_number,
+            label: "Phone Number",
+            input_html: { autocomplete: "Contact phone number",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :email,
+            label: "Email",
+            input_html: { autocomplete: "Contact email",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :location,
+            label: "Location",
+            input_html: { autocomplete: "Job's location",
+              class: 'form-control form-margin-btn'} %>
+<%= f.button :submit,
+              "Publish Job Offer",
+              class: "btn btn-success" %>
+<% end %>
