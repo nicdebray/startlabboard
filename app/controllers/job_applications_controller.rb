@@ -3,7 +3,7 @@ class JobApplicationsController < ApplicationController
   before_action :set_job_offer, only: [:new, :create, :update, :destroy]
 
   def index
-    @job_applications = JobApplications.all
+    @job_applications = current_user.job_applications.all
   end
 
   def show

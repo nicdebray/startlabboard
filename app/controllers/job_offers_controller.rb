@@ -2,7 +2,7 @@ class JobOffersController < ApplicationController
   before_action :set_job_offer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @job_offers = JobOffer.all
+    @job_offers = current_user.job_offers.all
   end
 
   def show
@@ -14,7 +14,7 @@ class JobOffersController < ApplicationController
   end
 
   def create
-    @job_offer = JobOffer.new(joboffer_params)
+    @job_offer = JobOffer.new(job_offer_params)
     if @job_offer.save
       redirect_to job_offer_path(@job_offer)
     else
