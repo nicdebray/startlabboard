@@ -1,4 +1,5 @@
 class JobOffer < ApplicationRecord
   validates :title, :description, presence: true
-  has_many :job_applications
+  has_many :job_applications, dependent: :destroy
+  belongs_to :company
 end

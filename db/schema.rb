@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_212932) do
+ActiveRecord::Schema.define(version: 2019_05_24_222115) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "job_applications", force: :cascade do |t|
     t.string "first_name"
@@ -40,6 +48,17 @@ ActiveRecord::Schema.define(version: 2019_05_24_212932) do
     t.string "location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_job_offers_on_company_id"
+  end
+
+  create_table "usercompanies", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_usercompanies_on_company_id"
+    t.index ["user_id"], name: "index_usercompanies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,4 +75,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_212932) do
 
   add_foreign_key "job_applications", "job_offers"
   add_foreign_key "job_applications", "users"
+  add_foreign_key "job_offers", "companies"
+  add_foreign_key "usercompanies", "companies"
+  add_foreign_key "usercompanies", "users"
 end
