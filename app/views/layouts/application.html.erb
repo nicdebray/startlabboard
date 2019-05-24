@@ -12,6 +12,7 @@
 
   <body>
     <div class="container-main">
+      <div><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %></div>
       <%= render 'shared/navbar' %>
       <%= render 'shared/flashes' %>
       <%= yield %>

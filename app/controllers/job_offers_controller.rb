@@ -2,7 +2,7 @@ class JobOffersController < ApplicationController
   before_action :set_job_offer, only: [:show, :edit, :update, :destroy]
 
   def index
-    @job_offers = current_user.job_offers.all
+    @job_offers = JobOffer.all
   end
 
   def show
