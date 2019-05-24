@@ -1,5 +1,5 @@
 class JobOffersController < ApplicationController
-  before_action :set_joboffer, only: [:show, :edit, :update, :destroy]
+  before_action :set_job_offer, only: [:show, :edit, :update, :destroy]
 
   def index
     @job_offers = JobOffer.all
@@ -26,7 +26,7 @@ class JobOffersController < ApplicationController
   end
 
   def update
-    if @job_offer.update(joboffer_params)
+    if @job_offer.update(job_offer_params)
       redirect_to job_offer_path(@job_offer)
     else
       render :new
@@ -43,11 +43,11 @@ class JobOffersController < ApplicationController
 
   private
 
-  def set_joboffer
+  def set_job_offer
     @job_offer = JobOffer.find(params[:id])
   end
 
-  def joboffer_params
+  def job_offer_params
     params.require(:job_offer).permit(:company, :category, :title, :description, :start_date, :end_date, :phone_number, :email, :location)
   end
 end
