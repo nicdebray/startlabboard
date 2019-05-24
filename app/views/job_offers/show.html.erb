@@ -1,4 +1,6 @@
 <%= link_to "back to all offers", job_offers_path %>
-<h1><%= @job_offer.title %></h1>
+<h1> <%= @job_offer.title %></h1>
 <div> <%= @job_offer.description %> </div>
+<div><%= link_to "Apply", new_job_offer_job_application_path(@job_offer) %> </div>
+
 

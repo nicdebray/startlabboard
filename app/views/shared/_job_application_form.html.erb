@@ -1,0 +1,22 @@
+<%= simple_form_for([@job_offer, @job_application]) do |f| %>
+<%= f.input :first_name,
+            label: "First Name",
+            autofocus: false,
+            input_html: { autocomplete: "Your first name",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :last_name,
+            label: "Last Name",
+            input_html: { autocomplete: "Your last name",
+              class: 'form-control form-margin-btn'}%>
+<%= f.input :email,
+            label: "Email",
+            input_html: { autocomplete: "Contact email",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :motivation,
+            label: "Motivation",
+            input_html: { autocomplete: "Detailed your motivation",
+              class: 'form-control form-margin-btn'} %>
+<%= f.button :submit,
+              "Publish Job Offer",
+              class: "btn btn-success" %>
+<% end %>

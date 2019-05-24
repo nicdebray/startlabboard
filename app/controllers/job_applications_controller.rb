@@ -1,6 +1,6 @@
 class JobApplicationsController < ApplicationController
-  before_action set_job_application, only: [:show, :edit, :update, :destroy]
-  before_action set_job_offer, only: [:create, :update, :destroy]
+  before_action :set_job_application, only: [:show, :edit, :update, :destroy]
+  before_action :set_job_offer, only: [:new, :create, :update, :destroy]
 
   def index
     @job_applications = JobApplications.all
@@ -45,7 +45,7 @@ class JobApplicationsController < ApplicationController
   private
 
   def set_job_application
-    @job_application = JobApplication.find(params[:id])
+    @job_application = JobApplication.find(params[:job_application_id])
   end
 
   def set_job_offer
@@ -53,7 +53,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def job_application_params
-    params.require(:job_application).permit(:first_name, :last_name, :email, :motivation, :job_offer_id)
+    params.require(:job_application).permit(:first_name, :last_name, :email, :motivation, :job_offer_id, :job_application_id)
   end
 
 end
