@@ -16,6 +16,7 @@ class JobApplicationsController < ApplicationController
   def create
     @job_application = JobApplication.new(job_application_params)
     @job_application.job_offer = @job_offer
+    @job_application.user = current_user
     if @job_application.save
       redirect_to job_offer_path(@job_offer)
     else
@@ -45,7 +46,7 @@ class JobApplicationsController < ApplicationController
   private
 
   def set_job_application
-    @job_application = JobApplication.find(params[:job_application_id])
+    @job_application = JobApplication.find(params[:id])
   end
 
   def set_job_offer
