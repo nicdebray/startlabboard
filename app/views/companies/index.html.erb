@@ -1,4 +1,12 @@
 <h1>Companies#index</h1>
 <p>Find me in app/views/companies/index.html.erb</p>
 <div>My companies</div>
+<% @companies.each do |company| %>
+  <div class="card">
+  <div><%= link_to company.name, company_path(company) %></div>
+  <div><%= company.website %></div>
+  <div><%= link_to "Edit", edit_company_path(company) %></div>
+<% end %>
+</div>
+
 

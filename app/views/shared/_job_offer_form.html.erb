@@ -1,5 +1,5 @@
-<%= simple_form_for @job_offer do |f| %>
-<%= f.input :company,
+<%= simple_form_for ([@company, @job_offer]) do |f| %>
+<%= f.input :company_name,
             label: "Company",
             autofocus: false,
             input_html: { autocomplete: "Company's name",
@@ -11,7 +11,7 @@
               collection: @job_category
                 %>
 <%= f.input :title,
-            label: "title",
+            label: "Title",
             input_html: { autocomplete: "Job offer's title",
               class: 'form-control form-margin-btn'} %>
 <%= f.input :description,

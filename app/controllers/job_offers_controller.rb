@@ -1,5 +1,8 @@
 class JobOffersController < ApplicationController
   before_action :set_job_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: [:new, :create, :update, :destroy]
+
+  skip_before_action :authenticate_user!, only: :index
 
   def index
     @job_offers = JobOffer.all
@@ -15,6 +18,7 @@ class JobOffersController < ApplicationController
 
   def create
     @job_offer = JobOffer.new(job_offer_params)
+    @job_offer.company = @company
     if @job_offer.save
       redirect_to job_offer_path(@job_offer)
     else
@@ -45,6 +49,10 @@ class JobOffersController < ApplicationController
 
   def set_job_offer
     @job_offer = JobOffer.find(params[:id])
+  end
+
+  def set_company
+    @company = Company.find(params[:company_id])
   end
 
   def job_offer_params

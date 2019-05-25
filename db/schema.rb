@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_24_222115) do
+ActiveRecord::Schema.define(version: 2019_05_25_222053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 2019_05_24_222115) do
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
   create_table "job_applications", force: :cascade do |t|
@@ -37,7 +39,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_222115) do
   end
 
   create_table "job_offers", force: :cascade do |t|
-    t.string "company"
+    t.string "company_name"
     t.string "category"
     t.string "title"
     t.text "description"
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_222115) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "companies", "users"
   add_foreign_key "job_applications", "job_offers"
   add_foreign_key "job_applications", "users"
   add_foreign_key "job_offers", "companies"
