@@ -13,5 +13,6 @@
   <div>Job offers: <%= @company.job_offers.count %> </div>
   <% @company.job_offers.each do |offer| %>
   <div><%= link_to offer.title, company_job_offer_path(offer) %> </div>
+  <div>Applications: <%= offer.job_applications.count %> </div>
   <% end %>
 </div>
