@@ -20,7 +20,7 @@ class JobOffersController < ApplicationController
     @job_offer = JobOffer.new(job_offer_params)
     @job_offer.company = @company
     if @job_offer.save
-      redirect_to job_offer_path(@job_offer)
+      redirect_to company_job_offer_path(@job_offer)
     else
       render :new
     end

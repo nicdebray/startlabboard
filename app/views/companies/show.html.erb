@@ -12,6 +12,6 @@
   <div><%= link_to "Add User", new_company_usercompany_path(@company) %></div>
   <div>Job offers: <%= @company.job_offers.count %> </div>
   <% @company.job_offers.each do |offer| %>
-  <div><%= offer.title %> </div>
+  <div><%= link_to offer.title, company_job_offer_path(offer) %> </div>
   <% end %>
 </div>
