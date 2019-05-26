@@ -2,5 +2,6 @@
 <p>Find me in app/views/job_applications/show.html.erb</p>
 <div class="card">
   <div>For job: <%= @job_application.job_offer.title %></div>
+  <div>Applicant name: <%= @job_application.first_name %> <%= @job_application.last_name %> </div>
   <div>Motivation text: <%= @job_application.motivation %></div>
 </div>

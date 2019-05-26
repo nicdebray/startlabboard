@@ -3,6 +3,7 @@
 
 <% @job_offers.each do |job_offer| %>
   <div class="card">
+    <div><%= job_offer.company.name %></div>
     <div><%= link_to job_offer.title, job_offer_path(job_offer) %></div>
     <div><%= job_offer.description %></div>
     <div>Job applications' count: <%= job_offer.job_applications.length %> </div>

@@ -1,11 +1,14 @@
 <h1>JobApplications#index</h1>
 <p>Find me in app/views/job_applications/index.html.erb</p>
 
+<div> My applications to jobs:</div>
 <% @job_applications.each do |job_application| %>
   <div class="card">
     <div>For: <%= job_application.job_offer.title %> </div>
-    <div> <%= link_to "See offer", job_offer_path(job_application) %> </div>
+    <div> <%= link_to "See offer", job_offer_path(job_application.job_offer) %> </div>
     <div> <%= link_to "See Application", job_application_path(job_application) %> </div>
   </div>
 
 <% end %>
+
+<div> Applications to my job offers:</div>
