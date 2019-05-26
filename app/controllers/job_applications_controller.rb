@@ -3,6 +3,7 @@ class JobApplicationsController < ApplicationController
   before_action :set_job_offer, only: [:new, :create, :update, :destroy]
 
   def index
+    @companies = Company.where(user_id: current_user)
     @job_applications = current_user.job_applications.all
   end
 
