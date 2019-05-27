@@ -1,8 +1,11 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "See all job offers", job_offers_path, class: "btn btn-primary" %>
-<% if user_signed_in? %>
-  <%= link_to "See my applications", job_applications_path, class: "btn btn-primary" %>
-  <%= link_to "Create new Company", new_company_path, class: "btn btn-primary" %>
-  <%= link_to "My companies", companies_path, class: "btn btn-primary" %>
-<% end %>
+
+<div class="home-main-links">
+  <%= link_to "All job offers", job_offers_path, class: "btn btn-primary btn-home-links" %>
+  <% if user_signed_in? %>
+    <%= link_to "My applications", job_applications_path, class: "btn btn-primary btn-home-links" %>
+    <%= link_to "Create new Company", new_company_path, class: "btn btn-primary btn-home-links" %>
+    <%= link_to "My companies", companies_path, class: "btn btn-primary btn-home-links" %>
+  <% end %>
+</div>
