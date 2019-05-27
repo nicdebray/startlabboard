@@ -13,7 +13,7 @@ class JobOffersController < ApplicationController
   end
 
   def new
-    @job_category = %w(CDI CDD Internship)
+    @job_category = %w(Internship Fixed-Term\ Contract Permanent\ Contract)
     @job_offer = JobOffer.new
   end
 
