@@ -1,0 +1,20 @@
+html,
+body {
+  width: 100%;
+}
+
+html,
+body,
+.container-main {
+  height: 100%;
+  overflow: auto;
+}
+
+.container-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-content {
+  flex-grow: 1;
+}
