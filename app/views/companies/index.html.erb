@@ -3,8 +3,9 @@
 <div>My companies</div>
 <% @companies.each do |company| %>
   <div class="card">
-  <div><%= link_to company.name, company_path(company) %></div>
-  <div><%= company.website %></div>
+  <div>Company: <%= link_to company.name, company_path(company) %></div>
+  <div>Website: <%= company.website %></div>
+  <div><%= link_to "Create job offer", new_company_job_offer_path(company) %></div>
   <div><%= link_to "Edit", edit_company_path(company) %></div>
 <% end %>
 </div>
