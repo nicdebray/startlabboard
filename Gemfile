@@ -7,6 +7,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem 'jquery-rails'
 gem 'simple_form'
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

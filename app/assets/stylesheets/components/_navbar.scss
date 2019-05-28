@@ -12,17 +12,54 @@
   justify-content: space-between;
 }
 
-.navbar-container a {
+.navbar-home {
+  padding-left: 20px;
+  font-size: 25px;
+}
+
+.navbar-home a{
   color: white;
   text-decoration: none;
 }
 
-.navbar-home {
-  padding-left: 20px;
+.navbar-burger-icon {
+  font-size: 25px;
+  padding-right: 20px;
+  color: white;
+}
+
+#navbar-ddmenu {
+  height: 100%;
+  width: 25%;
+  position: absolute;
+  z-index: 1080;
+  top: 0;
+  right: 0;
+  background-color: white;
+  box-shadow: -1px 0px 4px $gray-300;
+}
+
+#navbar-close {
+  font-size: 25px;
+  padding-right: 20px;
+  color: $mygray;
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .navbar-login {
-  padding-right: 20px;
+  padding: 15px 0px 0px 15px;
+  font-size: 20px;
+}
+
+.navbar-login a{
+  color: $mygray;
+}
+
+.navbar-dd-signed-link {
+  margin-bottom: 10px;
 }
 
 
@@ -30,3 +67,25 @@
 .navbar-hidden {
   min-height: 59px;
 }
+
+
+// media query for smartphone
+
+@media (min-width: 320px) and (max-width: 480px) {
+
+#navbar-ddmenu {
+  width: 55%;
+}
+
+.navbar-login {
+  padding: 15px 0px 0px 15px;
+  font-size: 18px;
+}
+
+.navbar-dd-signed-link {
+  margin-bottom: 15px;
+}
+
+
+}
+

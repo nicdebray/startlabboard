@@ -1,11 +1,26 @@
 <div class="navbar-container">
   <div class="navbar-home"><%= link_to "Home", root_path %></div>
+  <div id="navbar-burger">
+    <i class="fas fa-bars navbar-burger-icon"></i>
+  </div>
+</div>
 
+<!-- navbar dropdown -->
+<div id="navbar-ddmenu" class="hidden">
+  <div id="navbar-close">
+    <i class="fas fa-times"></i>
+  </div>
   <div class="navbar-login">
     <% unless user_signed_in? %>
       <div><%= link_to "Log in", new_user_session_path %></div>
     <% else %>
-      <div><%= link_to "Log out", destroy_user_session_path, method: :delete %></div>
+      <div class="navbar-dd-signed-links">
+        <div class="navbar-dd-signed-link"> <%= link_to "My applications", job_applications_path %></div>
+        <div class="navbar-dd-signed-link"> <%= link_to "My companies", companies_path %></div>
+        <div class="navbar-dd-signed-link"> <%= link_to "Create new Company", new_company_path %></div>
+        <div class="navbar-dd-signed-link"><%= link_to "Log out", destroy_user_session_path, method: :delete %></div>
+      </div>
     <% end %>
   </div>
 </div>
+
