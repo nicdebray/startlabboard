@@ -1,7 +1,15 @@
-<h1>JobApplications#show</h1>
-<p>Find me in app/views/job_applications/show.html.erb</p>
-<div class="card">
-  <div>For job: <%= @job_application.job_offer.title %></div>
-  <div>Applicant name: <%= @job_application.first_name %> <%= @job_application.last_name %> </div>
-  <div>Motivation text: <%= @job_application.motivation %></div>
+<div class="container-fluid">
+  <h1>Job Applications</h1>
+  <p>Find here the job application's details</p>
+</div>
+
+<div class="container-fluid">
+  <div class="card">
+    <div class="ja-show-appli-elem">For job: <%= @job_application.job_offer.title %></div>
+    <div class="ja-show-appli-elem">Applied: <%= @job_application.job_offer.created_at.strftime("%d %b %Y") %></div>
+    <div class="ja-show-appli-elem">Applicant name: <%= @job_application.first_name %> <%= @job_application.last_name %> </div>
+    <div class="ja-show-appli-elem">Applicant email: <%= @job_application.email %> </div>
+    <div class="ja-show-appli-elem">Motivation text: <%= @job_application.motivation %></div>
+    <div class="ja-show-appli-elem"><%= mail_to @job_application.email, "Email applicant", class: "btn btn-success btn-ja-show-email", subject: "Your application to #{@job_application.job_offer.title}" %></div>
+  </div>
 </div>

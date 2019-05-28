@@ -1,17 +1,22 @@
-<h1>Companies#show</h1>
-<p>Find me in app/views/companies/show.html.erb</p>
-<div class="card">
-  <div><%= @company.name %></div>
-  <div><%= @company.website %></div>
-  <div><%= @company.description %></div>
-  <div><%= link_to "Edit", edit_company_path(@company) %></div>
-  <div>
-      <%= link_to "Delete", company_path(@company), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class="container-fluid">
+  <h1><%= @company.name %></h1>
+  <p>Find here your details</p>
+</div>
+
+<div class="container-fluid">
+  <div class="card">
+    <div>Name: <%= @company.name %></div>
+    <div>Website: <%= @company.website %></div>
+    <div>Description: <%= @company.description %></div>
+    <div><%= link_to "Edit", edit_company_path(@company) %></div>
+    <div>
+        <%= link_to "Delete", company_path(@company), method: :delete, data: { confirm: "Are you sure?" } %>
+    </div>
+    <div><%= link_to "Create job offer", new_company_job_offer_path(@company), class: "btn btn-success btn-comp-show-create" %></div>
+    <div>Job offers: <%= @company.job_offers.count %> </div>
+    <% @company.job_offers.each do |offer| %>
+    <div><%= link_to offer.title, company_job_offer_path(@company, offer) %> </div>
+    <div>Applications: <%= link_to offer.job_applications.count, company_job_offer_job_applications_path(@company, offer) %> </div>
+    <% end %>
   </div>
-  <div><%= link_to "Create job offer", new_company_job_offer_path(@company) %></div>
-  <div>Job offers: <%= @company.job_offers.count %> </div>
-  <% @company.job_offers.each do |offer| %>
-  <div><%= link_to offer.title, company_job_offer_path(@company, offer) %> </div>
-  <div>Applications: <%= link_to offer.job_applications.count, company_job_offer_job_applications_path(@company, offer) %> </div>
-  <% end %>
 </div>

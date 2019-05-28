@@ -1,27 +1,32 @@
-<h1>JobApplications#index</h1>
-<p>Find me in app/views/job_applications/index.html.erb</p>
+<div class="container-fluid">
+  <h1>Job Applications</h1>
+  <p>Find here all your job applications</p>
+</div>
 
-<div> My applications to job offers:</div>
-<% @job_applications.each do |job_application| %>
-  <div class="card">
-    <div>For: <%= job_application.job_offer.title %> </div>
-    <div> <%= link_to "See offer", job_offer_path(job_application.job_offer) %> </div>
-    <div> <%= link_to "See Application", job_application_path(job_application) %> </div>
-  </div>
-<% end %>
+<div class="container-fluid">
+  <div><h4>My applications to job offers:</h4></div>
+  <% @job_applications.each do |job_application| %>
+    <div class="card">
+      <div>For: <%= job_application.job_offer.title %> </div>
+      <div> <%= link_to "See offer", job_offer_path(job_application.job_offer) %> </div>
+      <div> <%= link_to "See Application", job_application_path(job_application) %> </div>
+    </div>
+  <% end %>
 
-<div> Applications to my job offers:</div>
-<% @companies.each do |company| %>
-  <div class="card">
-    <% company.job_offers.each do |offer| %>
-      <div> <%= offer.title %> @<%= offer.company.name %> </div>
-      <% if offer.job_applications.empty? %>
-        <div> no application yet </div>
-      <% else %>
-        <% offer.job_applications.each do |application| %>
-          <div> <%= application.first_name %> <%= application.last_name %> </div>
+  <div class="ja-appli2myjobs-title"><h4>Applications to my job offers:</h4></div>
+  <% @companies.each do |company| %>
+    <div class="card">
+      <% company.job_offers.each do |offer| %>
+        <div> <%= offer.title %> @<%= offer.company.name %> </div>
+        <% if offer.job_applications.empty? %>
+          <div> no application yet </div>
+        <% else %>
+          <% offer.job_applications.each do |application| %>
+            <div> <%= application.first_name %> <%= application.last_name %> </div>
+            <div> <%= link_to "See job application", job_application_path(application) %> </div>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </div>
-<% end %>
+    </div>
+  <% end %>
+</div>
