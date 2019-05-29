@@ -4,6 +4,9 @@
   <h1> <%= @job_offer.title %></h1>
   <div class="jo-show-desc-title">Description:</div>
   <div class="jo-show-desc-content"> <%= @job_offer.description %> </div>
+  <div class="jo-show-desc-content"> Start date: <%= @job_offer.start_date.strftime("%d %b %Y") %> </div>
+  <div class="jo-show-desc-content"> End date: <%= @job_offer.end_date.strftime("%d %b %Y") %> </div>
+  <div class="jo-show-desc-content"> Location: <%= @job_offer.location %> </div>
 
   <% if @job_offer.company.user == current_user %>
     <div> <%= link_to "Edit", edit_company_job_offer_path(@company, @job_offer) %> </div>
