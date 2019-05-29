@@ -10,6 +10,7 @@ class JobOffer < ApplicationRecord
   validate :end_date_after_start_date?
   validates :email, format: { with: /(\A([a-z]*\s*)*\<*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\>*\Z)/i }
   validates :phone_number, length: { in: 6..15 }
+  validates_uniqueness_of :job_offer_id, scope: :user_id
 
   def start_date_cannot_be_in_the_past
     if start_date.present? && start_date.past?
