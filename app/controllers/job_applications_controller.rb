@@ -1,6 +1,6 @@
 class JobApplicationsController < ApplicationController
   before_action :set_job_application, only: [:show, :edit, :update, :destroy]
-  before_action :set_job_offer, only: [:new, :create, :update, :destroy]
+  before_action :set_job_offer, only: [:new, :create, :update]
 
   def index
     @companies = Company.where(user_id: current_user)
@@ -38,7 +38,7 @@ class JobApplicationsController < ApplicationController
 
   def destroy
     if @job_application.destroy
-      redirect_to job_offer_path(@job_offer)
+      redirect_to job_applications_path
     else
       render :new
     end
