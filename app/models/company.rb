@@ -3,7 +3,7 @@ class Company < ApplicationRecord
   has_many :job_offers, dependent: :destroy
   belongs_to :user
 
-  validates :name, :address, presence: { message: 'must be provided}' }
+  validates :name, :address, presence: { message: 'must be provided' }
   validates :name, uniqueness: { case_sensitive: false }
 
   geocoded_by :address

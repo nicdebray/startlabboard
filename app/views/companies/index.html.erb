@@ -1,9 +1,13 @@
 <div class="container-fluid comp-index-header">
   <h1>My Companies</h1>
-  <p>Find here all your companies</p>
+  <div>Find here all your companies</div>
+  <% if @companies.count == 0 %>
+  <div>To <strong>publish a job offer</strong> you need a company first</div>
+  <% end %>
+  <div><%= link_to "Create company", new_company_path, class: "btn btn-success btn-crea-comp-index" %></div>
 </div>
 
-<div class="container-fluid comp-index-offers">
+<div class="container-fluid comp-index">
   <div>
     <h2>My companies</h2>
   </div>
@@ -11,7 +15,7 @@
     <div class="card">
       <div>Company: <%= link_to company.name, company_path(company) %></div>
       <div>Website: <%= company.website %></div>
-      <div><%= link_to "Create job offer", new_company_job_offer_path(company) %></div>
+      <div><%= link_to "Create job offer", new_company_job_offer_path(company), class: "btn btn-success btn-comp-show-create" %></div>
       <div><%= link_to "Edit", edit_company_path(company) %></div>
     </div>
   <% end %>
