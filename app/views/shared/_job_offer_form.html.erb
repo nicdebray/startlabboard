@@ -37,8 +37,18 @@
 <%= f.input :location,
             label: "Location",
             input_html: { autocomplete: "Job's location",
-              class: 'form-control form-margin-btn'} %>
+              class: 'form-control form-margin-btn',
+                id: 'searchTextField'} %>
 <%= f.button :submit,
               "Publish",
               class: "btn btn-success" %>
 <% end %>
+
+<script>
+  var input = document.getElementById('searchTextField');
+  var options = {
+    componentRestrictions: {country: 'be'}
+  };
+
+autocomplete = new google.maps.places.Autocomplete(input, options);
+</script>

@@ -4,7 +4,12 @@
 </div>
 
 <div class="container-fluid home-main-links">
-  <%= link_to "All job offers", job_offers_path, class: "btn btn-primary btn-home-links" %>
+  <div class="home-btn-action">
+    <%= link_to "All job offers", job_offers_path, class: "btn btn-primary btn-home-links" %>
+  </div>
+  <div class="home-btn-action">
+    <%= link_to "Publish job offer", companies_path, class: "btn btn-primary btn-home-links" %>
+  </div>
 </div>
 
 <div class="container-fluid hp-last-offers">
