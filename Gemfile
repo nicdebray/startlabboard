@@ -6,6 +6,7 @@ ruby '2.4.4'
 gem 'bootstrap', '~> 4.3.1'
 gem 'devise'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'geocoder'
 gem 'jquery-rails'
 gem 'simple_form'
 gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'

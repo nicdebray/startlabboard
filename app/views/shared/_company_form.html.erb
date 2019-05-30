@@ -4,15 +4,29 @@
             autofocus: false,
             input_html: { autocomplete: "Company's name",
               class: 'form-control form-margin-btn'} %>
-<%= f.input :website,
-            label: "Website",
-            input_html: { autocomplete: "Company's website",
-              class: 'form-control form-margin-btn'} %>
+<%= f.input :address,
+            label: "Address",
+            input_html: { autocomplete: "Company's address",
+              class: 'form-control form-margin-btn',
+              id: 'searchTextField'} %>
 <%= f.input :description,
             label: "Description",
             input_html: { autocomplete: "Company's description",
+              class: 'form-control form-margin-btn'} %>
+<%= f.input :website,
+            label: "Website",
+            input_html: { autocomplete: "Company's website",
               class: 'form-control form-margin-btn'} %>
 <%= f.button :submit,
               "Save company",
               class: "btn btn-success" %>
 <% end %>
+
+<script>
+  var input = document.getElementById('searchTextField');
+  var options = {
+    componentRestrictions: {country: 'be'}
+  };
+
+autocomplete = new google.maps.places.Autocomplete(input, options);
+</script>
