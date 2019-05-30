@@ -12,8 +12,8 @@
   </div>
   <div class="navbar-login">
     <% unless user_signed_in? %>
-      <div><%= link_to "Log in", new_user_session_path %></div>
-      <div><%= link_to "Create account", new_user_registration_path %></div>
+      <div class="navbar-dd-signed-link"><%= link_to "Log in", new_user_session_path %></div>
+      <div class="navbar-dd-signed-link"><%= link_to "Create account", new_user_registration_path %></div>
     <% else %>
       <div class="navbar-dd-signed-links">
         <div class="navbar-dd-signed-link"> <%= link_to "My applications", job_applications_path %></div>
