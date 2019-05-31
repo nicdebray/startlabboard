@@ -5,7 +5,14 @@
 
 <div class="container-fluid">
   <div class="card">
-    <div>Name: <%= @company.name %></div>
+    <div class="comp-logo-name-s">
+      <div class="comp-logo-s">
+        <div class="comp-logo-img-s">
+          <%= cl_image_tag @company.photo.url(:thumbnail), crop: :fill %>
+        </div>
+      </div>
+      <div>Name: <%= @company.name %></div>
+    </div>
     <div>Website: <%= @company.website %></div>
     <div>Description: <%= @company.description %></div>
     <div><%= link_to "Edit", edit_company_path(@company) %></div>
