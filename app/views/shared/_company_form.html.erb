@@ -3,7 +3,7 @@
             label: "Company's name",
             autofocus: false,
             input_html: { autocomplete: "Company's name",
-              class: 'form-control form-margin-btn'} %>
+              class: 'form-control form-margin-btn', placeholder: "Enter your company's name"} %>
 <%= f.input :address,
             label: "Address",
             input_html: { autocomplete: "Company's address",
@@ -12,11 +12,18 @@
 <%= f.input :description,
             label: "Description",
             input_html: { autocomplete: "Company's description",
-              class: 'form-control form-margin-btn'} %>
+              class: 'form-control form-margin-btn',
+                placeholder: "Describe briefly your company's mission, its activities, etc."} %>
 <%= f.input :website,
             label: "Website",
             input_html: { autocomplete: "Company's website",
+              class: 'form-control form-margin-btn', placeholder: "Enter your website: ex. www.mycompany.com"} %>
+<%= f.input :photo,
+            label: "Company's logo",
+            input_html: { autocomplete: "Company's logo",
               class: 'form-control form-margin-btn'} %>
+<%= f.input :photo_cache,
+            as: :hidden %>
 <%= f.button :submit,
               "Save company",
               class: "btn btn-success" %>
