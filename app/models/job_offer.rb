@@ -2,7 +2,7 @@ class JobOffer < ApplicationRecord
   has_many :job_applications, dependent: :destroy
   belongs_to :company
 
-  validates :company_name, :category, :title, :description, :phone_number, :location, presence: true
+  validates :company_name, :category, :title, :description, :phone_number, :address, presence: true
   validates :category, inclusion: { in: %w(Internship Fixed-Term\ Contract Permanent\ Contract),
                                     message: "%{value} is not a valid contract category" }
   validate :start_date_cannot_be_in_the_past
@@ -11,8 +11,8 @@ class JobOffer < ApplicationRecord
   validates :email, format: { with: /(\A([a-z]*\s*)*\<*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\>*\Z)/i }
   validates :phone_number, length: { in: 6..15 }
 
-  geocoded_by :location
-  after_validation :geocode, if: :will_save_change_to_location?
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 
   def start_date_cannot_be_in_the_past
     if start_date.present? && start_date.past?
