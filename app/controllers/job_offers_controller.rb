@@ -1,25 +1,28 @@
 class JobOffersController < ApplicationController
   before_action :set_company_show, only: [:show]
   before_action :set_company, only: [:new, :create, :edit, :update, :destroy]
+  before_action :set_job_categories, only: [:new, :edit]
   before_action :set_job_offer, only: [:show, :edit, :update, :destroy]
 
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @job_offers = JobOffer.all
+    @job_offers = policy_scope(JobOffer)
   end
 
   def show
   end
 
   def new
-    @job_category = %w(Internship Fixed-Term\ Contract Permanent\ Contract)
     @job_offer = JobOffer.new
+    @job_offer.company = @company
+    authorize @job_offer
   end
 
   def create
     @job_offer = JobOffer.new(job_offer_params)
     @job_offer.company = @company
+    authorize @job_offer
     if @job_offer.save
       redirect_to company_job_offer_path(@company, @job_offer)
     else
@@ -48,8 +51,13 @@ class JobOffersController < ApplicationController
 
   private
 
+  def set_job_categories
+    @job_category = %w(Internship Fixed-Term\ Contract Permanent\ Contract)
+  end
+
   def set_job_offer
     @job_offer = JobOffer.find(params[:id])
+    authorize @job_offer
   end
 
   def set_company_show

@@ -2,7 +2,7 @@ class CompaniesController < ApplicationController
   before_action :set_company, only: [:show, :edit, :update, :destroy]
 
   def index
-    @companies = Company.where(user_id: current_user)
+    @companies = policy_scope(Company)
   end
 
   def show
@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
     @company.user_id = current_user.id
+    authorize @company
     if @company.save
       redirect_to company_path(@company)
     else
@@ -46,6 +47,7 @@ class CompaniesController < ApplicationController
 
   def set_company
     @company = Company.find(params[:id])
+    authorize @company
   end
 
   def company_params

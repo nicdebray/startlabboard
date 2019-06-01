@@ -8,8 +8,10 @@
   <div class="jo-show-desc-content"> End date: <%= @job_offer.end_date.strftime("%d %b %Y") %> </div>
   <div class="jo-show-desc-content"> Address: <%= @job_offer.address %> </div>
 
-  <% if @job_offer.company.user == current_user %>
+  <% if policy(@job_offer).edit? %>
     <div> <%= link_to "Edit", edit_company_job_offer_path(@company, @job_offer) %> </div>
+  <% end %>
+  <% if policy(@job_offer).destroy? %>
     <div> <%= link_to "Delete", company_job_offer_path(@company, @job_offer), method: :delete, data: {confirm: "Are you sure?"} %> </div>
   <% else %>
     <div><%= link_to "Apply", new_job_offer_job_application_path(@job_offer), class: "btn btn-success btn-jo-show-apply" %> </div>
