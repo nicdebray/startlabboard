@@ -8,10 +8,11 @@ gem 'carrierwave', '~> 1.2'
 gem 'cloudinary', '~> 1.9.1'
 gem 'devise'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 gem 'geocoder'
 gem 'jquery-rails'
+gem 'pundit'
 gem 'simple_form'
-gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

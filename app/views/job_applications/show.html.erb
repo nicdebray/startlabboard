@@ -15,9 +15,10 @@
       <div class="ja-show-appli-elem">
         <%= mail_to @job_application.email, "Email applicant", class: "btn btn-success btn-ja-show-email", subject: "Your application to #{@job_application.job_offer.title}" %>
       </div>
+    <% end %>
 
-      <% else %>
-        <div> <%= link_to "Delete", job_application_path(@job_application), method: :delete, data: {confirm: "Are you sure?"} %> </div>
+    <% if policy(@job_application).destroy? %>
+      <div> <%= link_to "Delete", job_application_path(@job_application), method: :delete, data: {confirm: "Are you sure?"} %> </div>
     <% end %>
   </div>
 </div>
