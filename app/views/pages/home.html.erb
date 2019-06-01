@@ -1,14 +1,19 @@
-<div class="container-fluid hp-header">
-  <h1>Job Board</h1>
-  <p>Find and manage here all your jobs and applications</p>
-</div>
-
-<div class="container-fluid home-main-links">
-  <div class="home-btn-action">
-    <%= link_to "All job offers", job_offers_path, class: "btn btn-primary btn-home-links" %>
+<div class="container-fluid content-1st-header hp-banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url(<%= asset_path 'home-bckgrnd-computer.jpg' %>">
+  <div class="hp-header-text">
+    <h1>Job Board</h1>
+    <div class="hp-header-tagline">
+      Find & manage here all your jobs and applications
+    </div>
   </div>
-  <div class="home-btn-action">
-    <%= link_to "Publish job offer", companies_path, class: "btn btn-primary btn-home-links" %>
+  <div class="hp-header-cta">
+    <div class="home-main-links">
+      <div class="home-btn-action">
+        <%= link_to "All job offers", job_offers_path, class: "btn btn-primary btn-home-links" %>
+      </div>
+      <div class="home-btn-action">
+        <%= link_to "Publish job offer", companies_path, class: "btn btn-primary btn-home-links" %>
+      </div>
+    </div>
   </div>
 </div>
 

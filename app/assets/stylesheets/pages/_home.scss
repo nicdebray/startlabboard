@@ -1,14 +1,41 @@
+.hp-banner {
+  height: 50vh;
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.hp-header-text {
+  min-width: 345px;
+}
+
+.hp-header-tagline {
+  font-size: 18px;
+}
+
+.hp-header-cta {
+  flex-grow: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .home-main-links {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-around;
+  min-width: 345px;
 }
 
 .btn-home-links {
-  margin-bottom: 10px;
-}
+  height: 50px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 
-.home-btn-action {
-  margin-right: 15px;
 }
 
 .hp-last-offers {
