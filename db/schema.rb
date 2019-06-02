@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_31_145847) do
+ActiveRecord::Schema.define(version: 2019_06_02_213649) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2019_05_31_145847) do
     t.bigint "company_id"
     t.float "latitude"
     t.float "longitude"
+    t.boolean "published", default: true
     t.index ["company_id"], name: "index_job_offers_on_company_id"
   end
 

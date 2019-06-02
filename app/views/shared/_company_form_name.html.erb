@@ -1,0 +1,10 @@
+<%= simple_form_for(@company) do |f| %>
+<%= f.input :name,
+            label: "Company's name",
+            autofocus: false,
+            input_html: { autocomplete: "Company's name",
+              class: 'form-control form-margin-btn', placeholder: "Enter your company's name"} %>
+<%= f.button :submit,
+              "Save company",
+              class: "btn btn-success" %>
+<% end %>
