@@ -1,3 +1,75 @@
 .btn-jo-show-apply {
   margin-top: 15px;
 }
+
+.grid-container {
+  // box-shadow: 0px 1px 6px $mygray;
+  // border-radius: 5px;
+  margin-bottom: 75px;
+  display: grid;
+  grid-template-columns: 15px 50px 350px 50px 250px;
+  grid-template-rows: 75px 50px 50px 50px 250px 50px;
+  grid-template-areas:
+    "leftpad header header header header"
+    "leftpad iconloc location iconcat category"
+    "leftpad icontime time iconother other"
+    "leftpad desctitle desctitle desctitle desctitle"
+    "leftpad description description description description"
+    "leftpad footer footer footer cta";
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+
+.jo-show-grid-background {
+  grid-column: 1 / span 5;
+  grid-row: 1 / span 6;
+  z-index: -1000;
+  box-shadow: 0px 1px 6px $mygray;
+  border-radius: 5px;
+}
+
+.jo-show-job-title {
+  grid-area: header;
+  align-self: center;
+}
+
+.jo-show-job-title h1{
+  font-size: 44px;
+  margin-bottom: 0;
+}
+
+.jo-show-job-location {
+  grid-area: location;
+}
+
+.jo-show-job-time {
+  grid-area: time;
+  display: flex;
+  justify-content: space-between;
+}
+
+.jo-show-job-category {
+  grid-area: category;
+}
+
+.jo-show-job-desc-title {
+  grid-area: desctitle;
+}
+
+.jo-show-job-desc-content {
+  grid-area: description;
+}
+
+
+
+.jo-show-cta {
+  grid-area: cta;
+}
+
+.jo-show-cta-owner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 50px;
+}
