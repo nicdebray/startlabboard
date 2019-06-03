@@ -1,54 +1,67 @@
 <div class="container-fluid content-1st-header">
-
-  <%= link_to "back to all offers", job_offers_path %>
-
-  <div class="grid-container">
-    <div class="jo-show-grid-background">
-    </div>
-
-    <div class="jo-show-job-title">
-      <h1> <%= @job_offer.title %></h1>
-    </div>
-    <div class="jo-show-job-location">
-      <%= @job_offer.address %>
-    </div>
-    <div class="jo-show-job-time">
-      Start-End:
-      <div class="jo-show-desc-content">
-         <%= @job_offer.start_date.strftime("%d %b %Y") %>
+  <div class="jo-show-backoffers">
+    <%= link_to "back to all offers", job_offers_path %>
+  </div>
+  <div class="grid-container-container">
+    <div class="grid-container">
+      <div class="jo-show-grid-background">
       </div>
-      <div class="jo-show-desc-content">
-        <%= @job_offer.end_date.strftime("%d %b %Y") %>
+
+      <div class="jo-show-job-title">
+        <h1> <%= @job_offer.title.capitalize %></h1>
       </div>
-    </div>
-
-    <div class="jo-show-job-category">
-      <%= @job_offer.category %>
-    </div>
-
-    <div class="jo-show-job-desc-title">
-      Description:
-    </div>
-
-    <div class="jo-show-job-desc-content">
-      <%= @job_offer.description %>
-    </div>
-
-    <div class="jo-show-cta">
-      <div class="jo-show-cta-owner">
-        <% if policy(@job_offer).edit? %>
-          <div> <%= link_to "Edit", edit_company_job_offer_path(@company, @job_offer) %> </div>
-        <% end %>
-        <% if policy(@job_offer).destroy? %>
-          <div> <%= link_to "Delete", company_job_offer_path(@company, @job_offer), method: :delete, data: {confirm: "Are you sure?"} %> </div>
+      <div class="jo-show-job-iconloc">
+        <i class="fas fa-map-marker-alt jo-show-icons"></i>
       </div>
-      <div class="jo-show-cta-applicant">
+      <div class="jo-show-job-location">
+        <% if @job_offer.latitude.nil? || @job_offer.longitude.nil? %>
+          <%=  @job_offer.address %>
         <% else %>
-          <div><%= link_to "Apply", new_job_offer_job_application_path(@job_offer), class: "btn btn-success btn-jo-show-apply" %>
-          </div>
+          <%= link_to @job_offer.address, "https://www.google.com/maps/search/?api=1&query=#{@job_offer.latitude},#{@job_offer.longitude}", target: "blank" %>
         <% end %>
       </div>
-    </div>
+      <div class="jo-show-job-icontime">
+        <i class="far fa-calendar-alt jo-show-icons"></i>
+      </div>
+      <div class="jo-show-job-time">
+        Start-End:
+        <div class="jo-show-time-content">
+           <%= @job_offer.start_date.strftime("%d %b %Y") %>
+        </div>
+        <div class="jo-show-time-content">
+          <%= @job_offer.end_date.strftime("%d %b %Y") %>
+        </div>
+      </div>
+      <div class="jo-show-job-iconcat">
+        <i class="fas fa-tags jo-show-icons"></i>
+      </div>
+      <div class="jo-show-job-category">
+        <%= @job_offer.category %>
+      </div>
 
+      <div class="jo-show-job-desc-title">
+        Description:
+      </div>
+
+      <div class="jo-show-job-desc-content">
+        <%= @job_offer.description %>
+      </div>
+
+      <div class="jo-show-cta">
+        <div class="jo-show-cta-owner">
+          <% if policy(@job_offer).edit? %>
+            <div class="jo-show-cta-edit"> <%= link_to "Edit", edit_company_job_offer_path(@company, @job_offer) %> </div>
+          <% end %>
+          <% if policy(@job_offer).destroy? %>
+            <div class="jo-show-cta-delete"> <%= link_to "Delete", company_job_offer_path(@company, @job_offer), method: :delete, data: {confirm: "Are you sure?"} %> </div>
+        </div>
+        <div class="jo-show-cta-applicant">
+          <% else %>
+            <div><%= link_to "Apply", new_job_offer_job_application_path(@job_offer), class: "btn btn-success btn-jo-show-apply" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
