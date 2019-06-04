@@ -50,7 +50,22 @@
       <div class="jo-show-cta">
         <div class="jo-show-cta-owner">
           <% if policy(@job_offer).edit? %>
-            <div class="jo-show-cta-edit"> <%= link_to "Edit", edit_company_job_offer_path(@company, @job_offer) %> </div>
+            <div class="jo-show-cta-published">
+              <div class="jo-s-cta-pub-text">
+                Published
+              </div>
+              <div class="jo-s-cta-pub-link">
+                <%= link_to toggle_published_job_offer_path(@job_offer), remote: true do %>
+                  <% if @job_offer.published === true %>
+                    <i class="fas fa-toggle-on published_toggle" data-published="<%= @job_offer.published? %>"></i>
+                  <% else %>
+                    <i class="fas fa-toggle-off published_toggle" data-published="<%= @job_offer.published? %>"></i>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+            <div class="jo-show-cta-edit"> <%= link_to "Edit", edit_company_job_offer_path(@company, @job_offer) %>
+            </div>
           <% end %>
           <% if policy(@job_offer).destroy? %>
             <div class="jo-show-cta-delete"> <%= link_to "Delete", company_job_offer_path(@company, @job_offer), method: :delete, data: {confirm: "Are you sure?"} %> </div>
@@ -65,3 +80,5 @@
     </div>
   </div>
 </div>
+<%= javascript_pack_tag 'toggle_published_jo' %>
+

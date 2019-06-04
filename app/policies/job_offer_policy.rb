@@ -21,6 +21,10 @@ class JobOfferPolicy < ApplicationPolicy
     user_is_owner?          # only owner of the jo's company can
   end
 
+  def toggle_published?
+    user_is_owner?          # only owner of the jo's company can
+  end
+
   private
 
   def user_is_owner?

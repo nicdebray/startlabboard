@@ -7,7 +7,8 @@ class JobOffersController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @job_offers = policy_scope(JobOffer)
+    @job_offers = policy_scope(JobOffer).where('start_date > ?', DateTime.now)
+    @job_offers_old = policy_scope(JobOffer).where('start_date < ?', DateTime.now)
   end
 
   def show
@@ -47,6 +48,12 @@ class JobOffersController < ApplicationController
     else
       render :new
     end
+  end
+
+  def toggle_published
+    set_job_offer
+    @job_offer.published = !@job_offer.published
+    @job_offer.save
   end
 
   private
