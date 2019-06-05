@@ -28,7 +28,7 @@
           <%= link_to job.title.truncate(50, separator: ' '), job_offer_path(job) %>
         </div>
         <div class="hp-offer-date">
-          (<%= job.created_at.strftime("%d %b %Y") %>)
+          (published: <%= job.created_at.strftime("%d %b %Y") %>)
         </div>
       </div>
     <% end %>
