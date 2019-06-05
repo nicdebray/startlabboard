@@ -25,7 +25,7 @@
     <% @job_offers_last.each do |job| %>
       <div class="hp-last-offers-offer">
         <div class="hp-offer-title">
-          <%= link_to job.title.truncate(50, separator: ' '), job_offer_path(job) %>
+          <%= link_to job.title.truncate(30, separator: ' '), job_offer_path(job) %>
         </div>
         <div class="hp-offer-date">
           (published: <%= job.created_at.strftime("%d %b %Y") %>)
