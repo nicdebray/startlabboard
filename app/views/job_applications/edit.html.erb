@@ -1,2 +1,10 @@
-<h1>JobApplications#edit</h1>
-<p>Find me in app/views/job_applications/edit.html.erb</p>
+<div class="container-fluid content-1st-header">
+  <h1>
+    <div>Edit application for:</div>
+    <div> <%= @job_offer.title %></div>
+  </h1>
+</div>
+
+<div class="container-fluid myforms col-xs-12 col-sm-9 col-md-6 col-lg-4">
+  <%= render 'shared/job_application_form' %>
+</div>
