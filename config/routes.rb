@@ -14,6 +14,9 @@ Rails.application.routes.draw do
     member do
       get 'toggle_published', to: 'job_offers#toggle_published'
     end
+    collection do
+      get 'my_job_offers', to: 'job_offers#my_job_offers'
+    end
     resources :job_applications, only: [:new, :create]
   end
 

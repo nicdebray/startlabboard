@@ -3,6 +3,10 @@ class JobOfferPolicy < ApplicationPolicy
     def resolve
       scope.all             # all users can see all job offers
     end
+
+    def my_job_offers?
+      scope.all
+    end
   end
 
   def show?

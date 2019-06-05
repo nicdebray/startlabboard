@@ -56,6 +56,11 @@ class JobOffersController < ApplicationController
     @job_offer.save
   end
 
+  def my_job_offers
+    @my_job_offers = policy_scope(JobOffer).joins(:company).where(companies: {user_id: current_user}).where('start_date > ?', DateTime.now)
+    @my_job_offers_old = policy_scope(JobOffer).joins(:company).where(companies: {user_id: current_user}).where('start_date < ?', DateTime.now)
+  end
+
   private
 
   def set_job_categories

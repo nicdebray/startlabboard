@@ -1,0 +1,23 @@
+<!-- navbar dropdown -->
+<div id="navbar-ddmenu" class="hidden">
+  <div id="navbar-close">
+    <i class="fas fa-times"></i>
+  </div>
+  <div class="navbar-login">
+    <% unless user_signed_in? %>
+      <div class="navbar-dd-signed-link"><%= link_to "Log in", new_user_session_path %></div>
+      <div class="navbar-dd-signed-link"><%= link_to "Create account", new_user_registration_path %></div>
+    <% else %>
+      <div class="navbar-dd-signed-links">
+        <div class="navbar-dd-signed-link"> <%= link_to "My applications", job_applications_path %></div>
+        <% unless @companies.count == 0 %>
+          <div class="navbar-dd-signed-link"> <%= link_to "My companies", companies_path %></div>
+          <div class="navbar-dd-signed-link"> <%= link_to "My job offers", my_job_offers_job_offers_path %></div>
+        <% else %>
+          <div class="navbar-dd-signed-link"> <%= link_to "Create new Company", new_company_path %></div>
+        <% end %>
+        <div class="navbar-dd-signed-link"><%= link_to "Log out", destroy_user_session_path, method: :delete %></div>
+      </div>
+    <% end %>
+  </div>
+</div>

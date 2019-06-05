@@ -1,0 +1,47 @@
+<div class="container-fluid content-1st-header">
+  <h1>My Job Offers</h1>
+  <p>Find here all your job offers</p>
+  <div class="home-btn-action">
+    <%= link_to "Publish job offer", companies_path, class: "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="container-fluid comp-index-offers">
+  <div>
+    <h2>My current Job Offers</h2>
+  </div>
+  <% if @my_job_offers.empty? %>
+    <div class="card">
+      You have no current job offers
+    </div>
+  <% else %>
+    <% @my_job_offers.each do |my_job_offer| %>
+      <div class="card">
+        <div><%= my_job_offer.company.name %></div>
+        <div><%= link_to my_job_offer.title, job_offer_path(my_job_offer) %></div>
+        <div><%= my_job_offer.description %></div>
+        <div>Job applications' count: <%= my_job_offer.job_applications.length %> </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="container-fluid comp-index-offers">
+  <div>
+    <h2>My past Job Offers</h2>
+  </div>
+   <% if @my_job_offers_old.empty? %>
+    <div class="card">
+      You have no ended job offers
+    </div>
+  <% else %>
+    <% @my_job_offers_old.each do |my_job_offer_old| %>
+      <div class="card">
+        <div><%= my_job_offer_old.company.name %></div>
+        <div><%= link_to my_job_offer_old.title, job_offer_path(my_job_offer_old) %></div>
+        <div><%= my_job_offer_old.description %></div>
+        <div>Job applications' count: <%= my_job_offer_old.job_applications.length %> </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
