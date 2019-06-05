@@ -1,0 +1,41 @@
+.job-offers-results {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.jo-results-card-title {
+  border-bottom: 1px solid $gray-200;
+}
+
+.jo-results-card-title h3{
+  font-size: 24px;
+}
+
+.jo-results-card-company {
+  padding: 10px 0px;
+  color: $gray-500;
+}
+
+.jo-results-card-desc-title h4{
+  font-size: 20px;
+}
+
+.jo-results-card-desc-content {
+  padding: 5px 5px 5px 0px;
+  min-height: 100px;
+  max-height: 250px;
+  overflow: scroll;
+  background-color: #f9fafa;
+}
+
+.jo-results-card-bottom {
+  padding-top: 10px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.jo-results-card-cta {
+  padding-right: 10px;
+}

@@ -8,7 +8,7 @@
       </div>
 
       <div class="jo-show-job-title">
-        <h1> <%= @job_offer.title.capitalize %></h1>
+        <h1> <%= @job_offer.title.capitalize.truncate(20, separator: ' ') %></h1>
       </div>
       <div class="jo-show-job-iconloc">
         <i class="fas fa-map-marker-alt jo-show-icons"></i>

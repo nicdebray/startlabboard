@@ -1,7 +1,7 @@
 <div class="container-fluid content-1st-header">
   <h1>Job Offers</h1>
   <p>Find here all job offers available</p>
-  <div class="home-btn-action">
+  <div class="content-1st-header-btn-action">
     <%= link_to "Publish job offer", companies_path, class: "btn btn-primary" %>
   </div>
 </div>
@@ -10,13 +10,32 @@
   <div>
     <h2>All Job Offers</h2>
   </div>
-
-  <% @job_offers.each do |job_offer| %>
-    <div class="card">
-      <div><%= job_offer.company.name %></div>
-      <div><%= link_to job_offer.title, job_offer_path(job_offer) %></div>
-      <div><%= job_offer.description %></div>
-      <div>Job applications' count: <%= job_offer.job_applications.length %> </div>
-    </div>
-  <% end %>
+  <div class="job-offers-results col-xs-12 col-sm-9 col-md-6">
+    <% @job_offers.each do |job_offer| %>
+      <div class="card">
+        <div class="jo-results-card-title">
+          <h3>
+            <%= link_to job_offer.title.capitalize.truncate(30, separator: ' '), job_offer_path(job_offer) %>
+          </h3>
+        </div>
+        <div class="jo-results-card-company">
+          Company: <%= job_offer.company.name %>
+        </div>
+        <div class="jo-results-card-desc-title">
+          <h4>Description:</h4>
+        </div>
+        <div class="jo-results-card-desc-content">
+          <%= job_offer.description %>
+        </div>
+        <div class="jo-results-card-bottom">
+          <div class="jo-results-card-appli-count">
+            Job applications' count: <%= job_offer.job_applications.length %>
+          </div>
+          <div class="jo-results-card-cta">
+            <%= link_to 'More', job_offer_path(job_offer), class: "btn btn-success" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
