@@ -9,6 +9,8 @@ class JobOffersController < ApplicationController
   def index
     @job_offers = policy_scope(JobOffer).where('start_date > ?', DateTime.now)
     @job_offers_old = policy_scope(JobOffer).where('start_date < ?', DateTime.now)
+    @job_offers_published_open = policy_scope(JobOffer).where(published: true).where('start_date > ?', DateTime.now)
+    @job_offers_published_old = policy_scope(JobOffer).where(published: true).where('start_date < ?', DateTime.now)
   end
 
   def show

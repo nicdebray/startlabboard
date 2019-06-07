@@ -10,7 +10,7 @@ class JobOfferPolicy < ApplicationPolicy
   end
 
   def show?
-    true                    # any user can see any job offer
+    user_is_owner_or_record_is_published?  # any user can see any job offer
   end
 
   def create?
@@ -34,5 +34,12 @@ class JobOfferPolicy < ApplicationPolicy
   def user_is_owner?
     # check the owner of the company for which a jo is done
     Company.find(record.company_id).user_id == user.id
+  end
+
+  def user_is_owner_or_record_is_published?
+    # check the owner of the company for which a jo is done
+    if record.published || user_is_owner?
+      true
+    end
   end
 end
