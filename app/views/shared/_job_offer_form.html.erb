@@ -3,12 +3,13 @@
             label: "Company",
             autofocus: false,
             input_html: { autocomplete: "Company's name",
-              class: 'form-control form-margin-btn'} %>
+              class: 'form-control form-margin-btn',
+              value: @company.name} %>
 <%= f.input :category,
             label: "Category",
             input_html: { autocomplete: "Job's category",
               class: 'form-control form-margin-btn form-category'},
-              collection: @job_category
+              collection: @job_category, prompt: "Select your job offer's category";
                 %>
 <%= f.input :title,
             label: "Title",
@@ -33,12 +34,14 @@
 <%= f.input :email,
             label: "Email",
             input_html: { autocomplete: "Contact email",
-              class: 'form-control form-margin-btn'} %>
+              class: 'form-control form-margin-btn',
+              value: current_user.email} %>
 <%= f.input :address,
             label: "Address",
             input_html: { autocomplete: "Job's address",
               class: 'form-control form-margin-btn',
-              id: 'searchTextField'} %>
+              id: 'searchTextField',
+              value: @company.address} %>
 <%= f.button :submit,
               "Publish",
               class: "btn btn-success" %>
