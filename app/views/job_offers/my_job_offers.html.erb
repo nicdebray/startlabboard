@@ -21,6 +21,20 @@
         <div><%= link_to my_job_offer.title, job_offer_path(my_job_offer) %></div>
         <div><%= my_job_offer.description %></div>
         <div>Job applications' count: <%= my_job_offer.job_applications.length %> </div>
+        <div class="jo-show-cta-published">
+          <div class="jo-s-cta-pub-text">
+            Published
+          </div>
+          <div class="jo-s-cta-pub-link">
+            <%= link_to toggle_published_job_offer_path(my_job_offer), remote: true do %>
+              <% if my_job_offer.published === true %>
+                <i class="fas fa-toggle-on published_toggle" data-published="<%= my_job_offer.published? %>"></i>
+              <% else %>
+                <i class="fas fa-toggle-off published_toggle" data-published="<%= my_job_offer.published? %>"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
     <% end %>
   <% end %>
@@ -45,3 +59,4 @@
     <% end %>
   <% end %>
 </div>
+<%= javascript_pack_tag 'toggle_published_jo' %>
