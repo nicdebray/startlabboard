@@ -11,7 +11,8 @@
 <%= f.input :email,
             label: "Email",
             input_html: { autocomplete: "Contact email",
-              class: 'form-control form-margin-btn'} %>
+              class: 'form-control form-margin-btn',
+              value: current_user.email} %>
 <%= f.input :motivation,
             label: "Motivation",
             input_html: { autocomplete: "Detailed your motivation",

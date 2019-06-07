@@ -1,7 +1,7 @@
 <div class="container-fluid content-1st-header">
   <h1>
     <div>Application for:</div>
-    <div> <%= @job_offer.title %></div>
+    <div> <%= @job_offer.title.capitalize.truncate(50, separator: ' ') %></div>
   </h1>
 </div>
 
