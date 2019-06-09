@@ -22,15 +22,9 @@ Rails.application.routes.draw do
 
   resources :job_applications
 
+  require "sidekiq/web"
+  authenticate :user, lambda { |u| u.admin } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
-
-# as a user I can see all the job offers
-# as a user I can apply all the job offers ie. new/create
-# as a user I can see all my applications, edit and delete them
-
-# as a user I can see create update a company
-# as a user I can manage usercompany assignment
-# as a user I can see create update destroy a job offer for company
-# as a user I can see job applications for a job offer for company

@@ -12,6 +12,8 @@ gem 'font-awesome-rails', '~> 4.6', '>= 4.6.3.1'
 gem 'geocoder'
 gem 'jquery-rails'
 gem 'pundit'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 gem 'simple_form'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
