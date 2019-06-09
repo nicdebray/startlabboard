@@ -1,0 +1,15 @@
+<div class="container-fluid content-1st-header">
+  <h1><%= @user.last_name %></h1>
+  <p>Find here your details</p>
+</div>
+
+<div class="container-fluid">
+  <div class="card">
+    <div>
+      <%= @user.email  %>
+    </div>
+    <div>
+      <%= link_to "edit", edit_user_registration_path  %>
+    </div>
+  </div>
+</div>
