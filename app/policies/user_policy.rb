@@ -12,6 +12,6 @@ class UserPolicy < ApplicationPolicy
   private
 
   def user_is_owner?
-    record.id == user.id
+    record.id == user.id || user.admin == true
   end
 end
