@@ -35,6 +35,12 @@
                   autofocus: false,
                   input_html: { autocomplete: "Last name",
                   class: 'form-control form-margin-btn', placeholder: "Enter your last name"}%>
+      <%= f.input :photo,
+                  label: "Your profile picture",
+                  input_html: { autocomplete: "Your profile picture",
+                  class: 'form-control form-margin-btn'} %>
+      <%= f.input :photo_cache,
+                  as: :hidden %>
     </div>
 
     <div class="form-actions">

@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :companies
   has_many :job_applications
   has_many :companies, through: :job_applications
+
+  mount_uploader :photo, PhotoUploader
 end
