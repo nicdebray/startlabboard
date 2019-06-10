@@ -5,8 +5,8 @@ class JobOffer < ApplicationRecord
   validates :company_name, :category, :title, :description, :phone_number, :address, presence: true
   validates :category, inclusion: { in: %w(Internship Fixed-Term\ Contract Permanent\ Contract),
                                     message: "%{value} is not a valid contract category" }
-  validate :start_date_cannot_be_in_the_past
-  validate :end_date_cannot_be_in_the_past
+  validate :start_date_cannot_be_in_the_past, on: :create
+  validate :end_date_cannot_be_in_the_past, on: :create
   validate :end_date_after_start_date?
   validates :email, format: { with: /(\A([a-z]*\s*)*\<*([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\>*\Z)/i }
   validates :phone_number, length: { in: 6..15 }
