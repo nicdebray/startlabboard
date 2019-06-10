@@ -8,6 +8,6 @@ class PagesController < ApplicationController
   private
 
   def last_offers(latest)
-    @job_offers_last = JobOffer.all.where(published: true).where('start_date > ?', DateTime.now).order('created_at DESC').limit(latest)
+    @job_offers_last = JobOffer.all.where(published: true).where('start_date > ?', DateTime.yesterday).order('created_at DESC').limit(latest)
   end
 end

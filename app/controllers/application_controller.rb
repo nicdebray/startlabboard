@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def make_job_offers_dispo
-    @my_job_offers ||= JobOffer.joins(:company).where(companies: {user_id: current_user}).where('start_date > ?', DateTime.now)
+    @my_job_offers ||= JobOffer.joins(:company).where(companies: {user_id: current_user}).where('start_date > ?', DateTime.yesterday)
   end
 
   def skip_pundit?
