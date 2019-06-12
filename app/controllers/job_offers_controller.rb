@@ -8,9 +8,9 @@ class JobOffersController < ApplicationController
 
   def index
     @job_offers = policy_scope(JobOffer).where('start_date > ?', DateTime.yesterday)
-    @job_offers_old = policy_scope(JobOffer).where('start_date < ?', DateTime.yesterday)
+    @job_offers_old = policy_scope(JobOffer).where('start_date < ?', DateTime.now)
     @job_offers_published_open = policy_scope(JobOffer).where(published: true).where('start_date > ?', DateTime.yesterday)
-    @job_offers_published_old = policy_scope(JobOffer).where(published: true).where('start_date < ?', DateTime.yesterday)
+    @job_offers_published_old = policy_scope(JobOffer).where(published: true).where('start_date < ?', DateTime.now)
   end
 
   def show
@@ -59,8 +59,8 @@ class JobOffersController < ApplicationController
   end
 
   def my_job_offers
-    @my_job_offers = policy_scope(JobOffer).joins(:company).where(companies: {user_id: current_user}).where('start_date > ?', DateTime.yesterday)
-    @my_job_offers_old = policy_scope(JobOffer).joins(:company).where(companies: {user_id: current_user}).where('start_date < ?', DateTime.yesterday)
+    @my_job_offers = policy_scope(JobOffer).joins(:company).where(companies: { user_id: current_user }).where('start_date > ?', DateTime.yesterday)
+    @my_job_offers_old = policy_scope(JobOffer).joins(:company).where(companies: { user_id: current_user }).where('start_date < ?', DateTime.now)
   end
 
   private

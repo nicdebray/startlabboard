@@ -5,8 +5,11 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # has_many :companies, through: :usercompany
   has_many :companies
-  has_many :job_applications
-  has_many :companies, through: :job_applications
+  has_many :job_offers, through: :companies
+  has_many :job_applications, through: :job_offers
+  has_many :applicants, through: :job_applications, source: :user
+
+  has_many :job_solicitations, class_name: 'JobApplication'
 
   mount_uploader :photo, PhotoUploader
 end

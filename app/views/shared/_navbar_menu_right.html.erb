@@ -10,7 +10,7 @@
     <% else %>
       <div class="navbar-dd-signed-links">
         <div class="navbar-dd-signed-link"> <%= link_to "My profile", user_path(current_user.id) %></div>
-        <div class="navbar-dd-signed-link"> <%= link_to "My applications", job_applications_path %></div>
+        <div class="navbar-dd-signed-link"> <%= link_to "My applications (#{current_user.applicants.count + current_user.job_solicitations.count})", job_applications_path %></div>
         <% unless @companies.count == 0 %>
           <div class="navbar-dd-signed-link"> <%= link_to "My companies (#{@companies.where(user_id: current_user.id).count})", companies_path %></div>
           <div class="navbar-dd-signed-link"> <%= link_to "My job offers (#{@my_job_offers.count})", my_job_offers_job_offers_path %></div>
