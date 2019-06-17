@@ -1,20 +1,22 @@
+# frozen_string_literal: true
+
 class JobOffersController < ApplicationController
   before_action :set_company_show, only: [:show]
-  before_action :set_company, only: [:new, :create, :edit, :update, :destroy]
-  before_action :set_job_categories, only: [:new, :edit]
-  before_action :set_job_offer, only: [:show, :edit, :update, :destroy]
+  before_action :set_company, only: %i[new create edit update destroy]
+  before_action :set_job_categories, only: %i[new edit]
+  before_action :set_job_offer, only: %i[show edit update destroy]
 
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @job_offers = policy_scope(JobOffer).where('start_date > ?', DateTime.yesterday)
-    @job_offers_old = policy_scope(JobOffer).where('start_date < ?', DateTime.now)
-    @job_offers_published_open = policy_scope(JobOffer).where(published: true).where('start_date > ?', DateTime.yesterday)
-    @job_offers_published_old = policy_scope(JobOffer).where(published: true).where('start_date < ?', DateTime.now)
+    all_job_offers = policy_scope(JobOffer)
+    @job_offers = all_job_offers.current_offers
+    @job_offers_old = all_job_offers.old_offers
+    @job_offers_published_open = @job_offers.where(published: true) #  reusing what we have to stay dry
+    @job_offers_published_old = @job_offers_old.where(published: true) # ditto
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @job_offer = JobOffer.new
@@ -33,8 +35,7 @@ class JobOffersController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @job_offer.update(job_offer_params)
@@ -59,14 +60,15 @@ class JobOffersController < ApplicationController
   end
 
   def my_job_offers
-    @my_job_offers = policy_scope(JobOffer).joins(:company).where(companies: { user_id: current_user }).where('start_date > ?', DateTime.yesterday)
-    @my_job_offers_old = policy_scope(JobOffer).joins(:company).where(companies: { user_id: current_user }).where('start_date < ?', DateTime.now)
+    all_job_offers = policy_scope(current_user.job_offers) # Active Record Model already has the association
+    @my_job_offers = all_job_offers.current_offers #  Let s stay Dry
+    @my_job_offers_old = all_job_offers.old_offers #  dottp
   end
 
   private
 
   def set_job_categories
-    @job_category = %w(Internship Fixed-Term\ Contract Permanent\ Contract)
+    @job_category = JobOffer::CONTRACT_CATEGORIES # So it's the same array all over the app
   end
 
   def set_job_offer

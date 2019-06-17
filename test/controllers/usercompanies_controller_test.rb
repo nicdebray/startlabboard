@@ -2,37 +2,37 @@ require 'test_helper'
 
 class UsercompaniesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get usercompanies_index_url
+    get user_companies_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get usercompanies_show_url
+    get user_companies_show_url
     assert_response :success
   end
 
   test "should get new" do
-    get usercompanies_new_url
+    get user_companies_new_url
     assert_response :success
   end
 
   test "should get create" do
-    get usercompanies_create_url
+    get user_companies_create_url
     assert_response :success
   end
 
   test "should get edit" do
-    get usercompanies_edit_url
+    get user_companies_edit_url
     assert_response :success
   end
 
   test "should get update" do
-    get usercompanies_update_url
+    get user_companies_update_url
     assert_response :success
   end
 
   test "should get destroy" do
-    get usercompanies_destroy_url
+    get user_companies_destroy_url
     assert_response :success
   end
 
