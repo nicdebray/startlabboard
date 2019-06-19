@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
   def home
@@ -7,7 +9,8 @@ class PagesController < ApplicationController
 
   private
 
-  def last_offers(latest)
-    @job_offers_last = JobOffer.all.where(published: true).where('start_date > ?', DateTime.yesterday).order('created_at DESC').limit(latest)
+  def last_offers(limit)
+    # rename and used the function to make it simpler to read
+    @job_offers_last = JobOffer.current_offers.where(published: true).order('created_at DESC').limit(limit)
   end
 end

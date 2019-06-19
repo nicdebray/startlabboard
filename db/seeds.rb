@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# puts "Destroy usercompanies"
+# puts "Destroy user_companies"
 # UserCompany.destroy_all if Rails.env.development?
 
 # puts "Destroy companies"

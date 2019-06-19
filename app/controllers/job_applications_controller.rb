@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class JobApplicationsController < ApplicationController
-  before_action :set_job_application, only: [:show, :edit, :update, :destroy]
-  before_action :set_job_offer, only: [:new, :create, :update]
+  before_action :set_job_application, only: %i[show edit update destroy]
+  before_action :set_job_offer, only: %i[new create update]
 
   def index
     @companies = Company.where(user_id: current_user)
@@ -8,7 +10,7 @@ class JobApplicationsController < ApplicationController
   end
 
   def show
-    authorize @job_application
+    # authorize @job_application already in set_job_application
   end
 
   def new
@@ -19,7 +21,7 @@ class JobApplicationsController < ApplicationController
 
   def create
     @job_application = JobApplication.new(job_application_params)
-    @job_application.job_offer = @job_offer
+    @job_application.job_offer_id = params[:job_offer_id] # pas bsoin de demande a la db de le trouver
     @job_application.user = current_user
     authorize @job_application
     if @job_application.save
@@ -29,8 +31,7 @@ class JobApplicationsController < ApplicationController
     end
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @job_offer.update(job_application_params)

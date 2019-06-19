@@ -61,13 +61,13 @@ ActiveRecord::Schema.define(version: 2019_06_10_193004) do
     t.index ["company_id"], name: "index_job_offers_on_company_id"
   end
 
-  create_table "usercompanies", force: :cascade do |t|
+  create_table "user_companies", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["company_id"], name: "index_usercompanies_on_company_id"
-    t.index ["user_id"], name: "index_usercompanies_on_user_id"
+    t.index ["company_id"], name: "index_user_companies_on_company_id"
+    t.index ["user_id"], name: "index_user_companies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -90,6 +90,6 @@ ActiveRecord::Schema.define(version: 2019_06_10_193004) do
   add_foreign_key "job_applications", "job_offers"
   add_foreign_key "job_applications", "users"
   add_foreign_key "job_offers", "companies"
-  add_foreign_key "usercompanies", "companies"
-  add_foreign_key "usercompanies", "users"
+  add_foreign_key "user_companies", "companies"
+  add_foreign_key "user_companies", "users"
 end

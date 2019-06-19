@@ -1,4 +1,4 @@
-<%= simple_form_for ([@company, @usercompany]) do |f| %>
+<%= simple_form_for ([@company, @user_company]) do |f| %>
   <%= f.association :user, input_html: { class: "beautiful-dropdown" }, include_hidden: false %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

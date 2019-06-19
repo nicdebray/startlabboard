@@ -1,10 +1,14 @@
+# frozen_string_literal: true
+
 class JobOffer < ApplicationRecord
+  CONTRACT_CATEGORIES = %w[Internship Fixed-Term\ Contract Permanent\ Contract].freeze
+
   has_many :job_applications, dependent: :destroy
   belongs_to :company
 
   validates :company_name, :category, :title, :description, :phone_number, :address, presence: true
-  validates :category, inclusion: { in: %w(Internship Fixed-Term\ Contract Permanent\ Contract),
-                                    message: "%{value} is not a valid contract category" }
+  validates :category, inclusion: { in: CONTRACT_CATEGORIES,
+                                    message: '%{value} is not a valid contract category' }
   validate :start_date_cannot_be_in_the_past, on: :create
   validate :end_date_cannot_be_in_the_past, on: :create
   validate :end_date_after_start_date?
@@ -33,8 +37,14 @@ class JobOffer < ApplicationRecord
   end
 
   def end_date_after_start_date?
-    if end_date < start_date
-      errors.add :end_date, "must be after start date"
-    end
+    errors.add :end_date, 'must be after start date' if end_date < start_date
+  end
+
+  def self.current_offers
+    where('start_date > ?', DateTime.yesterday)
+  end
+
+  def self.old_offers
+    where('start_date < ?', DateTime.now)
   end
 end
